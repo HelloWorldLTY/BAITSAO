@@ -1,2 +1,58 @@
 # BAITSAO
-A foundation model for drug synergy analysis
+
+This is the offical code repo for manuscript: BAITSAO: Building A Foundation Model for Drug Synergy Analysis.
+
+# Installation
+
+We reply on [OpenAI](https://openai.com/) api for constructing the training dataset:
+
+```
+pip install openai
+```
+
+We reply on [pytorch](https://pytorch.org/get-started/locally/) and [pytorch lightnining](https://lightning.ai/docs/pytorch/stable/) for model training. We also use scanpy for analysis.
+
+```
+conda activate baitsao
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
+conda install lightning -c conda-forge
+pip install pandas
+pip install scanpy
+pip install scipy
+pip install scikit-learn
+```
+
+Optional: To reproduce our work based on CPA, please install CPA:
+
+```
+pip install git+https://github.com/theislab/cpa
+```
+
+Optional: To reprocude our work based on TabNet, please install TabNet:
+
+```
+pip install pytorch-tabnet
+```
+
+Optional: To reprocude our work based on BERT, please install transformer:
+
+```
+pip install transformer
+```
+
+# Training
+
+To pretrain our model based on your own dataset, please refer codes under **pretraining**. We upload our model checkpoint in the folder:
+
+To finetune our model or train it from scartch, please refer codes under **finetuning**.
+
+We also have modified CPA codes under CPA folder, with a notebook about how to use it.
+
+To test the performance of methods implemented in this manuscript, please refer the codes under **benchmarking**. Please refer official codes of [DeepSynergy](https://github.com/KristinaPreuer/DeepSynergy/tree/master), [MARSY](https://github.com/Emad-COMBINE-lab/MARSY), and [DeepDDs](https://github.com/Sinwang404/DeepDDs) for their implementation.
+
+# Acknowledgement
+
+We refer codes from [UW](https://github.com/Mikoto10032/AutomaticWeightedLoss), [PCGARD, GRADVAC](https://github.com/anzeyimana/Pytorch-PCGrad-GradVac-AMP-GradAccum) for the implementation of multi-task learning framework. Thanks for their great codes!
+
+
+# Citation
