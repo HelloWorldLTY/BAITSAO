@@ -50,6 +50,11 @@ We also have modified CPA codes under CPA folder, with a notebook about how to u
 
 To test the performance of methods implemented in this manuscript, please refer the codes under **benchmarking**. Please refer official codes of [DeepSynergy](https://github.com/KristinaPreuer/DeepSynergy/tree/master), [MARSY](https://github.com/Emad-COMBINE-lab/MARSY), and [DeepDDs](https://github.com/Sinwang404/DeepDDs) for their implementation.
 
+
+# Datasets
+
+We offer a demo dataset in [this folder](https://drive.google.com/drive/folders/1ZtfbJYSMnZH6HTUqbOlJBfiNkD5-9pIY?usp=sharing).
+
 # Acknowledgement
 
 We refer codes from [UW](https://github.com/Mikoto10032/AutomaticWeightedLoss), [PCGARD, GRADVAC](https://github.com/anzeyimana/Pytorch-PCGrad-GradVac-AMP-GradAccum) for the implementation of multi-task learning framework. Thanks for their great codes!
