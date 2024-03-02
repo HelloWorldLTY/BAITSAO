@@ -191,7 +191,7 @@ class Encoder(nn.Module):
 
             'loewe':self.loewe(self.l1(self.loewe_input(x_new))),
 
-            'ri_row':self.hsa(self.l1(self.hsa_input(x_row))),
+            'ic50_row':self.hsa(self.l1(self.hsa_input(x_row))),
 
             'classify':self.sigm(self.l1(self.sigm_input(x_new)))
 
@@ -201,7 +201,7 @@ class Encoder(nn.Module):
 
     def inference_task(self,x,label):
 
-        if label == 'ri_row':
+        if label == 'ic50_row':
 
             x_new = x
 
@@ -209,7 +209,7 @@ class Encoder(nn.Module):
 
 
 
-        if label == 'ri_col':
+        if label == 'ic50_col':
 
             x_new = x
 
@@ -232,6 +232,8 @@ class LitAutoEncoder(L.LightningModule):
         super().__init__()
 
         self.encoder = encoder
+
+        self.encoder.apply(init_weights)
 
         self.is_regression = torch.Tensor([True, True, False])
 

@@ -68,14 +68,13 @@ class MultiTaskLoss(torch.nn.Module):
         self.n_tasks = len(is_regression)
         self.log_vars = torch.nn.Parameter(torch.zeros(self.n_tasks))
         self.reduction = reduction
-        self.eps = 1e-8
 
     def forward(self, losses):
         dtype = losses.dtype
         device = losses.device
         stds = (torch.exp(self.log_vars)**(1/2)).to(device).to(dtype)
         self.is_regression = self.is_regression.to(device).to(dtype)
-        coeffs = 1 / ( (self.is_regression+1)*(stds**2 + self.eps) )
+        coeffs = 1 / ( (self.is_regression+1)*(stds**2) )
         multi_task_losses = coeffs*losses + torch.log(stds)
 
         if self.reduction == 'sum':
@@ -166,8 +165,7 @@ class LitAutoEncoder(L.LightningModule):
         ,F.mse_loss(self.encoder(x, 'ri_row'),y[:,2].view(x.size(0), -1))
         ,F.binary_cross_entropy(self.encoder(x, 'classify'), y[:,4].view(x.size(0), -1))])
         
-        # val_loss = self.loss_mode(val_loss)
-        val_loss = max(val_loss)
+        val_loss = self.loss_mode(val_loss)
 
         self.log("val_loss", val_loss.item())
         return val_loss

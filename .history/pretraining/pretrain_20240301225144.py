@@ -166,8 +166,7 @@ class LitAutoEncoder(L.LightningModule):
         ,F.mse_loss(self.encoder(x, 'ri_row'),y[:,2].view(x.size(0), -1))
         ,F.binary_cross_entropy(self.encoder(x, 'classify'), y[:,4].view(x.size(0), -1))])
         
-        # val_loss = self.loss_mode(val_loss)
-        val_loss = max(val_loss)
+        val_loss = self.loss_mode(val_loss)
 
         self.log("val_loss", val_loss.item())
         return val_loss
