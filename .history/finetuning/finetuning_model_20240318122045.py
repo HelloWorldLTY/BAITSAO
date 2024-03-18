@@ -27,6 +27,10 @@ with open("/gpfs/gibbs/pi/zhao/tl688/cpsc_finalproject/genept_data/GenePT/ensem_
 with open("/gpfs/gibbs/pi/zhao/tl688/cpsc_finalproject/genept_data/GenePT/ensem_emb_deepsynergydrug.pickle", 'rb') as f:
     drug_name_getembedding = pickle.load(f)
 
+df_grountruth_score.head()
+
+
+
 
 # Please modify this variable for testing fold
 test_fold = 0

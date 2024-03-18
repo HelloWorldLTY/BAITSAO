@@ -7,7 +7,6 @@ from torch.utils.data import DataLoader
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
-from transformers import TrainingArguments
 
 test_fold = 0
 raw_train_ds = Dataset.from_json(f"/gpfs/gibbs/pi/zhao/tl688/DeepSynergy/cv_example/test_data_word/output_train_fold{test_fold}.jsonl")
@@ -59,6 +58,7 @@ def compute_metrics(eval_pred):
     
     return metric.compute(predictions=predictions, references=labels)
 
+from transformers import TrainingArguments
 
 training_args = TrainingArguments(
     output_dir="../models/camembert-fine-tuned-regression",

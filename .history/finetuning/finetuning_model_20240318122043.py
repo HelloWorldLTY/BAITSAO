@@ -16,6 +16,7 @@ from torchvision.datasets import MNIST
 from torch.utils.data import DataLoader
 from torch import nn
 from lightning.pytorch.callbacks import LearningRateMonitor
+
 from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 
 df_deepsy = pd.read_csv("/gpfs/gibbs/pi/zhao/tl688/synergy_prediction/predictions_result_synergy.csv")
@@ -26,6 +27,10 @@ with open("/gpfs/gibbs/pi/zhao/tl688/cpsc_finalproject/genept_data/GenePT/ensem_
     cellline_name_getembedding = pickle.load(f)
 with open("/gpfs/gibbs/pi/zhao/tl688/cpsc_finalproject/genept_data/GenePT/ensem_emb_deepsynergydrug.pickle", 'rb') as f:
     drug_name_getembedding = pickle.load(f)
+
+df_grountruth_score.head()
+
+
 
 
 # Please modify this variable for testing fold

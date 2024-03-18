@@ -9,11 +9,10 @@ import sklearn.model_selection
 import scipy.stats
 import sklearn.metrics
 
+from torchvision import transforms
+from torchvision.datasets import MNIST
 from torch.utils.data import DataLoader
 from torch import nn
-from lightning.pytorch.callbacks import LearningRateMonitor
-from lightning.pytorch.callbacks.early_stopping import EarlyStopping
-
 
 # Please modify the fold path for your own dataset.
 
@@ -224,6 +223,10 @@ model = LitAutoEncoder(Encoder())
 
 print(model.log) #see log and log dir for model place
 
+
+
+from lightning.pytorch.callbacks import LearningRateMonitor
+from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 lr_monitor = LearningRateMonitor(logging_interval='step')
 
 train_loader = DataLoader(train_dataset, batch_size=4096, num_workers=5, shuffle=True)
@@ -292,6 +295,8 @@ print(cor, " ", r2score)
 with torch.no_grad():
     y_pred = model.encoder.inference_task(X_test, 'classify').detach()
 #     y_pred = torch.sigmoid(y_pred)
+import scipy.stats
+import sklearn.metrics
 
 print(sklearn.metrics.roc_auc_score(y_test[:,4], y_pred.t()[0]), sklearn.metrics.accuracy_score(y_test[:,4], (y_pred.t()[0]>0.5)*1))
 
