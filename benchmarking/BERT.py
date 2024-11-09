@@ -9,6 +9,8 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 from transformers import TrainingArguments
 
+
+# Here the training data of each combination contains: descriptions of drug 1, descriptions of drug 2, and descriptions of the cell line.
 test_fold = 0
 raw_train_ds = Dataset.from_json(f"/gpfs/gibbs/pi/zhao/tl688/DeepSynergy/cv_example/test_data_word/output_train_fold{test_fold}.jsonl")
 raw_val_ds = Dataset.from_json(f"/gpfs/gibbs/pi/zhao/tl688/DeepSynergy/cv_example/test_data_word/output_val_fold{test_fold}.jsonl")

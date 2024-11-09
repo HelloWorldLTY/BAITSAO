@@ -52,6 +52,10 @@ Optional: To reproduce our work based on [linearMTL](https://github.com/tohein/l
 install.packages("linearMTL")
 ```
 
+# Preparing datasets
+
+To generate the embeddings used in the training process, please refer codes under **embeddings**.
+
 # Training
 
 To pretrain our model based on your own dataset, please refer codes under **pretraining**. We upload our model checkpoint in the folder:
