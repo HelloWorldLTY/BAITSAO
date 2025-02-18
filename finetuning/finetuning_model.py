@@ -21,6 +21,10 @@ from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 df_deepsy = pd.read_csv("/gpfs/gibbs/pi/zhao/tl688/synergy_prediction/predictions_result_synergy.csv")
 df_grountruth_score = pd.read_csv("/gpfs/gibbs/pi/zhao/tl688/synergy_prediction/labels_synergy_value.csv")
 
+df_grountruth_score = pd.read_csv("/gpfs/gibbs/pi/zhao/tl688/cpsc_finalproject/genept_data/GenePT/summary_v_1_5.csv")
+df_grountruth_score = df_grountruth_score.drop(df_grountruth_score[df_grountruth_score['synergy_loewe'] == '\\N'].index)
+df_grountruth_score = df_grountruth_score.dropna(subset=['drug_col', 'drug_row'])
+df_grountruth_score_update = df_grountruth_score.reset_index(drop=True)
 
 with open("/gpfs/gibbs/pi/zhao/tl688/cpsc_finalproject/genept_data/GenePT/ensem_emb_deepsynergycellline.pickle", 'rb') as f:
     cellline_name_getembedding = pickle.load(f)
@@ -60,9 +64,11 @@ df_test = df_grountruth_score[df_grountruth_score['fold'] == test_fold]
 test_list = {}
 for item in df_test.index.values:
     d1, d2, cl = df_grountruth_score.loc[item]['Unnamed: 0'].split('_')
-    value_list = np.hstack([drug_name_getembedding[d1] , drug_name_getembedding[d2] , cellline_name_getembedding[cl]])
-    value_list = np.hstack([value_list, 2])
-    test_list[item] = value_list
+    test_index = d1 + '_' + d2 +'_' + cl
+    if test_index not in df_grountruth_score_update.index:
+        value_list = np.hstack([drug_name_getembedding[d1] , drug_name_getembedding[d2] , cellline_name_getembedding[cl]])
+        value_list = np.hstack([value_list, 2])
+        test_list[item] = value_list
 
 X_test = np.array(list(test_list.values()))
 y_test = df_grountruth_score.loc[df_test.index.values]['synergy'].values
