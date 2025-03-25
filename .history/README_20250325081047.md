@@ -1,6 +1,6 @@
 # BAITSAO
 
-This is the offical code repo for manuscript: BAITSAO: Building A Foundation Model for Drug Synergy Analysis.
+This is the offical code repo for manuscript: BAITSAO: Building A Unified Model for Drug Synergy Analysis Powered by Large Language Models
 
 # Installation
 
