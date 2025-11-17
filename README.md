@@ -83,16 +83,15 @@ We refer codes from [UW](https://github.com/Mikoto10032/AutomaticWeightedLoss), 
 
 # Citation
 ```
-@article {Liu2024.04.08.588634,
-	author = {Tianyu Liu and Tinyi Chu and Xiao Luo and Hongyu Zhao},
-	title = {BAITSAO: Building A Foundation Model for Drug Synergy Analysis Powered by Language Models},
-	elocation-id = {2024.04.08.588634},
-	year = {2024},
-	doi = {10.1101/2024.04.08.588634},
-	publisher = {Cold Spring Harbor Laboratory},
-	URL = {https://www.biorxiv.org/content/early/2024/04/12/2024.04.08.588634},
-	eprint = {https://www.biorxiv.org/content/early/2024/04/12/2024.04.08.588634.full.pdf},
-	journal = {bioRxiv}
+@article{liu2025building,
+  title={Building a unified model for drug synergy analysis powered by large language models},
+  author={Liu, Tianyu and Chu, Tinyi and Luo, Xiao and Zhao, Hongyu},
+  journal={Nature Communications},
+  volume={16},
+  number={1},
+  pages={4537},
+  year={2025},
+  publisher={Nature Publishing Group UK London}
 }
-
 ```
+
